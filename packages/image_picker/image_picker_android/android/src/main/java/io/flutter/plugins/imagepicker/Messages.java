@@ -116,6 +116,16 @@ public class Messages {
       this.usePhotoPicker = setterArg;
     }
 
+    private @Nullable Integer maxItems;
+
+    public @Nullable Integer getMaxItems() {
+      return maxItems;
+    }
+
+    public void setMaxItems(@Nullable Integer setterArg) {
+      this.maxItems = setterArg;
+    }
+
     /** Constructor is non-public to enforce null safety; use Builder. */
     GeneralOptions() {}
 
@@ -135,19 +145,28 @@ public class Messages {
         return this;
       }
 
+      private @Nullable Integer maxItems;
+
+      public @NonNull Builder setMaxItems(@Nullable Integer setterArg) {
+        this.maxItems = setterArg;
+        return this;
+      }
+
       public @NonNull GeneralOptions build() {
         GeneralOptions pigeonReturn = new GeneralOptions();
         pigeonReturn.setAllowMultiple(allowMultiple);
         pigeonReturn.setUsePhotoPicker(usePhotoPicker);
+        pigeonReturn.setMaxItems(maxItems);
         return pigeonReturn;
       }
     }
 
     @NonNull
     ArrayList<Object> toList() {
-      ArrayList<Object> toListResult = new ArrayList<Object>(2);
+      ArrayList<Object> toListResult = new ArrayList<Object>(3);
       toListResult.add(allowMultiple);
       toListResult.add(usePhotoPicker);
+      toListResult.add(maxItems);
       return toListResult;
     }
 
@@ -157,6 +176,8 @@ public class Messages {
       pigeonResult.setAllowMultiple((Boolean) allowMultiple);
       Object usePhotoPicker = list.get(1);
       pigeonResult.setUsePhotoPicker((Boolean) usePhotoPicker);
+      Object maxItems = list.get(2);
+      pigeonResult.setMaxItems((Integer) maxItems);
       return pigeonResult;
     }
   }

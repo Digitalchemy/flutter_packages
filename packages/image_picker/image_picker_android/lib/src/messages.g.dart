@@ -30,16 +30,20 @@ class GeneralOptions {
   GeneralOptions({
     required this.allowMultiple,
     required this.usePhotoPicker,
+    this.maxItems,
   });
 
   bool allowMultiple;
 
   bool usePhotoPicker;
 
+  int? maxItems;
+
   Object encode() {
     return <Object?>[
       allowMultiple,
       usePhotoPicker,
+      maxItems,
     ];
   }
 
@@ -48,6 +52,7 @@ class GeneralOptions {
     return GeneralOptions(
       allowMultiple: result[0]! as bool,
       usePhotoPicker: result[1]! as bool,
+      maxItems: result[2] as int?,
     );
   }
 }

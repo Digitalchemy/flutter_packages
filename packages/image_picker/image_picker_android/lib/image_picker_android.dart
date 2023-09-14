@@ -22,6 +22,9 @@ class ImagePickerAndroid extends ImagePickerPlatform {
   /// Currently defaults to false, but the default is subject to change.
   bool useAndroidPhotoPicker = false;
 
+  /// Maximum limit of selectable items via Photo Picker
+  int? maxItems;
+
   /// Registers this class as the default platform implementation.
   static void registerWith() {
     ImagePickerPlatform.instance = ImagePickerAndroid();
@@ -88,7 +91,7 @@ class ImagePickerAndroid extends ImagePickerPlatform {
           maxHeight: maxHeight,
           quality: imageQuality ?? 100),
       GeneralOptions(
-          allowMultiple: true, usePhotoPicker: useAndroidPhotoPicker),
+          allowMultiple: true, usePhotoPicker: useAndroidPhotoPicker, maxItems: maxItems),
     );
   }
 
@@ -218,6 +221,7 @@ class ImagePickerAndroid extends ImagePickerPlatform {
       GeneralOptions(
         allowMultiple: options.allowMultiple,
         usePhotoPicker: useAndroidPhotoPicker,
+        maxItems: maxItems,
       ),
     ))
         .map((String? path) => XFile(path!))
