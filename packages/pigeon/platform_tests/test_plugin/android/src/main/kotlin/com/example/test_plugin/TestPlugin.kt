@@ -39,7 +39,7 @@ class TestPlugin : FlutterPlugin, HostIntegrationCoreApi {
   }
 
   override fun throwFlutterError(): Any? {
-    throw FlutterError("code", "message", "details")
+    throw CoreTestsError("code", "message", "details")
   }
 
   override fun echoInt(anInt: Long): Long {
@@ -80,6 +80,18 @@ class TestPlugin : FlutterPlugin, HostIntegrationCoreApi {
 
   override fun echoEnum(anEnum: AnEnum): AnEnum {
     return anEnum
+  }
+
+  override fun echoNamedDefaultString(aString: String): String {
+    return aString
+  }
+
+  override fun echoOptionalDefaultDouble(aDouble: Double): Double {
+    return aDouble
+  }
+
+  override fun echoRequiredInt(anInt: Long): Long {
+    return anInt
   }
 
   override fun extractNestedNullableString(wrapper: AllClassesWrapper): String? {
@@ -137,6 +149,14 @@ class TestPlugin : FlutterPlugin, HostIntegrationCoreApi {
     return anEnum
   }
 
+  override fun echoOptionalNullableInt(aNullableInt: Long?): Long? {
+    return aNullableInt
+  }
+
+  override fun echoNamedNullableString(aNullableString: String?): String? {
+    return aNullableString
+  }
+
   override fun noopAsync(callback: (Result<Unit>) -> Unit) {
     callback(Result.success(Unit))
   }
@@ -150,7 +170,7 @@ class TestPlugin : FlutterPlugin, HostIntegrationCoreApi {
   }
 
   override fun throwAsyncFlutterError(callback: (Result<Any?>) -> Unit) {
-    callback(Result.failure(FlutterError("code", "message", "details")))
+    callback(Result.failure(CoreTestsError("code", "message", "details")))
   }
 
   override fun echoAsyncAllTypes(everything: AllTypes, callback: (Result<AllTypes>) -> Unit) {
