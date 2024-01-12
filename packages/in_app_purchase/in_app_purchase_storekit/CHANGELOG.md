@@ -1,6 +1,11 @@
-## NEXT
+## 0.3.8+1
+
+* Adds privacy manifest.
+
+## 0.3.8
 
 * Updates minimum supported SDK version to Flutter 3.10/Dart 3.0.
+* Fixes new lint warnings.
 
 ## 0.3.7
 
